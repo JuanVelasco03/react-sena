@@ -1,0 +1,128 @@
+*{
+  margin: 0px;
+  padding: 0px;
+  box-sizing:border-box;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  text-decoration: none;
+}
+
+body{
+background-color: rgb(238, 238, 238);
+}
+
+.header-1{
+width: 100%;
+padding: 20px;
+background: #67AEFF;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to right, #0A77F4, #67AEFF);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to right, #0A77F4, #67AEFF); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */ 
+height: 80px;
+margin-top: 0px;
+margin-bottom: 0px;
+}
+
+.parrafo-1{
+  color: white;
+  font-size: 20px;
+  text-decoration: none;
+}
+
+.header2{
+  display: flex;
+  justify-content: space-between;
+  }
+
+.log-out{
+  color: white;
+font-size: 18px;
+text-decoration: none;
+}
+
+.log-out:hover{
+  color: #ccc;
+}
+
+.menu{
+  width: 100%;
+  margin: 0px;
+  margin-top: 20px;
+  border-bottom: 1px solid #67AEFF;
+}
+
+#main-container{
+  margin: auto;
+  margin-top: 90px;
+  width: 1300px;
+}
+
+
+.flex{
+display: flex;
+list-style: none;
+justify-content: center;
+}
+
+.flex li a {
+  display: flex;
+  align-items: center;
+  margin-top: 0px;
+  height: 25px;
+  color: rgb(0, 0, 0);
+  padding: 20px;
+  text-transform: uppercase;
+  font-size:14px;
+  transition: all 300ms ease;
+  border-right:  1px solid #67AEFF;
+  border-left:  1px solid #67AEFF;
+  text-decoration: none;
+  }
+  
+  .flex li a:hover{
+    transform:scale(1.1);
+    background: #67AEFF;
+    color: aliceblue;
+  }
+
+
+
+    
+.pie-pagina {
+position: fixed;
+bottom: 0;
+width: 100%;
+height: 60px;
+background: #1f1f1f;  /* fallback for old browsers */ text-align: center;
+color: aliceblue;
+font-size: 15px;
+padding-top: 20px;
+}
+
+.perfil{  
+background-color: #0091ff;
+width: 150px;
+height: 45px;
+padding: 5px;
+border-radius: 50px;
+transition: transform 0.3s;
+}
+
+.perfil-1{
+  padding: 5px;
+display: flex;
+justify-content: space-around;
+}
+
+.parrafo-2{
+text-decoration: none;
+color: white;
+}
+
+.perfil:hover{
+  background-color: #0079d5;
+color: rgb(255, 255, 255);
+transform: scale(1.08,1.08);
+}
+
+
+
+
