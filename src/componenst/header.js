@@ -1,5 +1,3 @@
-import "../css/menu-admin.css";
-
 const Header = () => {
   return (
     <div className="header-1">

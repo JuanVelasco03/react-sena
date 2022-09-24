@@ -1,16 +1,19 @@
 import { useState, useEffect } from "react";
 import { baseUrl } from "../ApiRest/baseUrl";
 import axios from 'axios';
-import {Modal, ModalBody, ModalFooter, ModalHeader} from 'reactstrap';
+import {Modal, ModalBody, ModalFooter} from 'reactstrap';
+import {Link} from 'react-router-dom'
+
+import Home from '../views/Home'
 
 import {useParams } from 'react-router-dom';
 
 
-const  HistorialNomina =(props) => {
+const  HistorialNomina = () => {
   let { userDocument } = useParams();
   const [nominas, setNominas] = useState([]);
   const [modalDelete, setModalDelete] = useState(false);  
-  const documento =  parseInt(userDocument)
+  const documento = parseInt(userDocument);
   const [currentId, setCurrentId] = useState("");
 
   const openCloseModalDelete = (id) => {
@@ -18,6 +21,7 @@ const  HistorialNomina =(props) => {
     setModalDelete(!modalDelete)
   }
 
+  
 
   const getAllNominas = async () => {
     await axios 
@@ -41,21 +45,25 @@ const  HistorialNomina =(props) => {
 
 
   const filteredNominas = nominas.filter(nomina=>nomina.traDocumento3 === documento)
-  console.log(filteredNominas)
+  // console.log(filteredNominas)
+  
   useEffect (() => {
     getAllNominas();
   }, [modalDelete])
 
-  console.log(filteredNominas)
+  // console.log(documento)
 
   return (
     <div>
+      <Home/>
+      <br />
+      <Link to="/gestornomina"><button className="btn btn-primary">Volver atras</button></Link>
       <div className="nomina-container">
       <table className='table table-bordered table-light table-hover mt-4'>
         <thead>
           <tr>
             <th>Documento</th>
-            <th>nombre</th>
+            <th>Nombre</th>
             <th>Apellido</th>
             <th>Salario estipulado</th>
             <th>Deduccion de salario</th>
@@ -98,8 +106,6 @@ const  HistorialNomina =(props) => {
         </ModalFooter>
       </Modal>
     </div>
-
-
   )
 }
 

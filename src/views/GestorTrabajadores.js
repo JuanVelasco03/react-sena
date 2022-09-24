@@ -11,6 +11,8 @@ import axios from 'axios';
 
 import { baseUrl } from '../ApiRest/baseUrl';
 
+import Home from '../views/Home'
+
 
 const  GestorTrabajadores = () => {
 
@@ -37,7 +39,7 @@ const  GestorTrabajadores = () => {
       ...WorkerSelected, [name]: value
     })
   }
-  console.log(WorkerSelected)
+  // console.log(WorkerSelected)
 
 
   const openCloseModal = () => {
@@ -64,7 +66,7 @@ const  GestorTrabajadores = () => {
 
   const postWorker = async() => {
     await axios
-    .post(baseUrl, WorkerSelected)
+    .post(baseUrl + "/" + "trabajador", WorkerSelected)
     .then(response=>{
       setWorkers(workers.concat(response.data));
       openCloseModal();
@@ -76,7 +78,7 @@ const  GestorTrabajadores = () => {
 
   const putWorker = async() =>{
     await axios
-    .put(baseUrl+"/"+WorkerSelected.traDocumento, WorkerSelected)
+    .put(baseUrl + "/" + "trabajador"+"/"+WorkerSelected.traDocumento, WorkerSelected)
     .catch(error => {
       console.log(error)
     });  
@@ -85,19 +87,21 @@ const  GestorTrabajadores = () => {
 
   const deleteWorker = async() => {
    await axios 
-   .delete(baseUrl+"/"+WorkerSelected.traDocumento)
+   .delete(baseUrl + "/" + "trabajador" + "/" + WorkerSelected.traDocumento)
    .catch(error => {
     console.log(error);
    });
    openCloseModalDelete();
   };
 
-  console.log(workers);
+  // console.log(workers);
 
   const selectWorker = (worker, caso) =>{
     setWorkerSelected(worker);
     (caso === "Editar") ? openCloseModalEdit() : openCloseModalDelete(); 
   }
+
+
 
   useEffect(() =>{
     getAllWorkers();
@@ -106,6 +110,7 @@ const  GestorTrabajadores = () => {
 
   return (
      <div className="App">
+      <Home />
       <br />
       <button className="btn btn-success" onClick={() => openCloseModal()}>Insertar un nuevo trabajador</button>
       <br />
@@ -151,24 +156,24 @@ const  GestorTrabajadores = () => {
         <ModalBody>
             <div>
               <h2> Ingresar trabajador</h2>
-              <p>Ingresa el documento del trabajador</p>
-              <input type="text" name="traDocumento"  onChange={handleChange}></input>
-              <p>Nombre de trabajador</p>
-              <input type="text" name="traNombre" onChange={handleChange}></input>
-              <p>Apellido del trabajador</p>
-              <input type="text" name="traApellido"  onChange={handleChange}></input> 
-              <p>Direccion del trabajador</p>
-              <input type="text" name="traDireccion"  onChange={handleChange}></input>
-              <p>Numero de celular del trabajador</p>
-              <input type="tel" name="traCelular"  onChange={handleChange}></input>
-              <p>Ingresa el email del trabajador</p>
-              <input type="email" name="traEmail" onChange={handleChange}></input>
-              <p>Fecha de nacimiento del trabajador</p>
-              <input type="date" name="traFechaNacimiento" onChange={handleChange}></input>
-              <p>Codigo de cuenta del trabajador</p>
-              <input type="text" name="traCodigocuenta"  onChange={handleChange}></input>
-              <p>Edad del trabajador</p>
-              <input type="text" name="traEdad" onChange={handleChange}></input>
+              <p className='mb-2'>Ingresa el documento del trabajador</p>
+              <input type="text" name="traDocumento"  className='w-100 mb-2' onChange={handleChange}></input>
+              <p className='mb-2'>Nombre de trabajador</p>
+              <input type="text" name="traNombre" className='w-100 mb-2' onChange={handleChange}></input>
+              <p className='mb-2'>Apellido del trabajador</p>
+              <input type="text" name="traApellido"  className='w-100 mb-2' onChange={handleChange}></input> 
+              <p className='mb-2'>Direccion del trabajador</p>
+              <input type="text" name="traDireccion"  className='w-100 mb-2' onChange={handleChange}></input>
+              <p className='mb-2'>Numero de celular del trabajador</p>
+              <input type="tel" name="traCelular"  className='w-100 mb-2' onChange={handleChange}></input>
+              <p className='mb-2'>Ingresa el email del trabajador</p>
+              <input type="email" name="traEmail" className='w-100 mb-2' onChange={handleChange}></input>
+              <p className='mb-2'>Fecha de nacimiento del trabajador</p>
+              <input type="date" name="traFechaNacimiento" className='w-100 mb-2' onChange={handleChange}></input>
+              <p className='mb-2'>Codigo de cuenta del trabajador</p>
+              <input type="text" name="traCodigocuenta"  className='w-100 mb-2' onChange={handleChange}></input>
+              <p className='mb-2'>Edad del trabajador</p>
+              <input type="text" name="traEdad" className='w-100 mb-2' onChange={handleChange}></input>
             </div>
             <ModalFooter>
               <button className='btn btn-primary' onClick={() => postWorker()}>Agregar nuevo trabajador</button>
@@ -181,25 +186,24 @@ const  GestorTrabajadores = () => {
         <ModalHeader>Editar Trabajador</ModalHeader>
         <ModalBody>
             <div>
-              <h2> Editar trabajador</h2>
-              <p>Ingresa el documento del trabajador</p>
-              <input type="text" name="traDocumento" disabled onChange={handleChange} value={WorkerSelected &&  WorkerSelected.traDocumento}></input>
-              <p>Nombre de trabajador</p>
-              <input type="text" name="traNombre" onChange={handleChange} value={WorkerSelected && WorkerSelected.traNombre}></input>
-              <p>Apellido del trabajador</p>
-              <input type="text" name="traApellido"  onChange={handleChange} value={WorkerSelected && WorkerSelected.traApellido}></input> 
-              <p>Direccion del trabajador</p>
-              <input type="text" name="traDireccion"  onChange={handleChange} value={WorkerSelected && WorkerSelected.traDireccion}></input>
-              <p>Numero de celular del trabajador</p>
-              <input type="tel" name="traCelular"  onChange={handleChange} value={WorkerSelected && WorkerSelected.traCelular}></input>
-              <p>Ingresa el email del trabajador</p>
-              <input type="email" name="traEmail" onChange={handleChange} value={WorkerSelected && WorkerSelected.traEmail}></input>
-              <p>Fecha de nacimiento del trabajador</p>
-              <input type="date" name="traFechaNacimiento" onChange={handleChange} value={WorkerSelected && WorkerSelected.traFechaNacimiento.substring(0, 10)}></input>
-              <p>Codigo de cuenta del trabajador</p>
-              <input type="text" name="traCodigocuenta"  onChange={handleChange} value={WorkerSelected && WorkerSelected.traCodigocuenta}></input>
-              <p>Edad del trabajador</p>
-              <input type="text" name="traEdad" onChange={handleChange} value={WorkerSelected && WorkerSelected.traEdad}></input>
+              <p className='mb-2'>Ingresa el documento del trabajador</p>
+              <input type="text" className='w-100 mb-2' name="traDocumento" disabled onChange={handleChange} value={WorkerSelected &&  WorkerSelected.traDocumento}></input>
+              <p className='mb-2'>Nombre de trabajador</p>
+              <input type="text" className='w-100 mb-2' name="traNombre" onChange={handleChange} value={WorkerSelected && WorkerSelected.traNombre}></input>
+              <p className='mb-2'>Apellido del trabajador</p>
+              <input type="text" className='w-100 mb-2' name="traApellido"  onChange={handleChange} value={WorkerSelected && WorkerSelected.traApellido}></input> 
+              <p className='mb-2'>Direccion del trabajador</p>
+              <input type="text" className='w-100 mb-2' name="traDireccion"  onChange={handleChange} value={WorkerSelected && WorkerSelected.traDireccion}></input>
+              <p className='mb-2'>Numero de celular del trabajador</p>
+              <input type="tel" className='w-100 mb-2' name="traCelular"  onChange={handleChange} value={WorkerSelected && WorkerSelected.traCelular}></input>
+              <p className='mb-2'>Ingresa el email del trabajador</p>
+              <input type="email" className='w-100 mb-2' name="traEmail" onChange={handleChange} value={WorkerSelected && WorkerSelected.traEmail}></input>
+              <p className='mb-2'>Fecha de nacimiento del trabajador</p>
+              <input type="date" className='w-100 mb-2' name="traFechaNacimiento" onChange={handleChange} value={WorkerSelected && WorkerSelected.traFechaNacimiento.substring(0, 10)}></input>
+              <p className='mb-2'>Codigo de cuenta del trabajador</p>
+              <input type="text" className='w-100 mb-2' name="traCodigocuenta"  onChange={handleChange} value={WorkerSelected && WorkerSelected.traCodigocuenta}></input>
+              <p className='mb-2'>Edad del trabajador</p>
+              <input type="text" className='w-100 mb-2' name="traEdad" onChange={handleChange} value={WorkerSelected && WorkerSelected.traEdad}></input>
             </div>
             <ModalFooter>
               <button className='btn btn-primary' onClick={() => putWorker()}>Editar trabajador</button>
@@ -210,7 +214,7 @@ const  GestorTrabajadores = () => {
 
       <Modal isOpen={modalDelete}>
         <ModalBody>
-        ¿Estas seguro de que deseas eliminar al trabajador <b>{WorkerSelected && WorkerSelected.traNombre}</b> el trabajador de la base de datos? 
+        ¿Estas seguro de que deseas eliminar al trabajador <b>{WorkerSelected && WorkerSelected.traNombre}</b> de la base de datos? 
         </ModalBody>
         <ModalFooter>
           <button className='btn btn-danger' onClick={() => deleteWorker()}>Si</button>

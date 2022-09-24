@@ -5,13 +5,15 @@ import {Modal, ModalBody, ModalFooter, ModalHeader} from 'reactstrap';
 
 import {Link} from 'react-router-dom'
 
-import HistorialNomina from "./HistorialNomina";
+// import HistorialNomina from "./HistorialNomina";
 
 import axios from 'axios';
 
 import { baseUrl } from '../ApiRest/baseUrl';
 
 import '../css/gestornomina.css'
+
+import Home from '../views/Home'
 
 
 
@@ -40,14 +42,11 @@ const GestorNomina = () => {
     setNominaSeleccionada({
       ...nominaSeleccionada, [name]: value
     })
-
   }
 
   const abrirCerrarModalAgregar = () =>{
     setModalAgregar(!modalAgregar)
   }
-
-
 
 
   const getAllWorkers = async() => {
@@ -92,6 +91,7 @@ const GestorNomina = () => {
   
   return (
     <>
+    <Home />
     <div className="main-nomina">
     <table className="table table-bordered table-light table-hover mt-4">
     <thead>
@@ -121,26 +121,26 @@ const GestorNomina = () => {
         <ModalHeader>Insertar nomina de un trabajador</ModalHeader>
         <ModalBody>
         <div>
-          <p>Documento del trabajador</p>
-          <input type="text" name="traDocumento3" onChange={handleChange}  value={nominaSeleccionada.traDocumento3} disabled />
-          <p>Nombre del trabajador</p>
-          <input type="text" name="nomNombre" onChange={handleChange}  value={nominaSeleccionada.nomNombre} disabled/>
-          <p>Apellido</p>
-          <input type="text" name="nomApellido" onChange={handleChange}  value={nominaSeleccionada.nomApellido} disabled/>
-          <p>Ingrese salario estipulado del trabajador</p>
-          <input type="number" name="nomSalarioestipulado" onChange={handleChange}  />
-          <p>Ingrese la deduccion del salario del trabajador</p>
-          <input type="number" name="nomDeduccionsalario" onChange={handleChange}  />
-          <p>Ingrese el descuento de salud y pension del trabajador</p>
-          <input type="number" name="nomSaludpension" onChange={handleChange}  />
-          <p>Ingrese el descuento de cesantias del trabajador</p>
-          <input type="number" name="nomCesantias" onChange={handleChange}  />
-          <p>Ingrese el descuento de parafiscales  del trabajador</p>
-          <input type="number" name="nomParafiscales" onChange={handleChange}  />
-          <p>Ingrese la fecha de inicio</p>
-          <input type="date" name="nomInicio" onChange={handleChange}  />
-          <p>Ingrese la fecha de fin</p>
-          <input type="date" name="nomFin" onChange={handleChange}  />
+          <p className="mb-2">Documento del trabajador</p>
+          <input type="text" name="traDocumento3" className="w-100 mb-2" onChange={handleChange}  value={nominaSeleccionada.traDocumento3} disabled />
+          <p className="mb-2">Nombre del trabajador</p>
+          <input type="text" name="nomNombre" className="w-100 mb-2" onChange={handleChange}  value={nominaSeleccionada.nomNombre} disabled/>
+          <p className="mb-2">Apellido</p>
+          <input type="text" name="nomApellido" className="w-100 mb-2" onChange={handleChange}  value={nominaSeleccionada.nomApellido} disabled/>
+          <p className="mb-2">Ingrese salario estipulado del trabajador</p>
+          <input type="number" name="nomSalarioestipulado" className="w-100 mb-2" onChange={handleChange}  />
+          <p className="mb-2">Ingrese la deduccion del salario del trabajador</p>
+          <input type="number" name="nomDeduccionsalario" className="w-100 mb-2" onChange={handleChange}  />
+          <p className="mb-2">Ingrese el descuento de salud y pension del trabajador</p>
+          <input type="number" name="nomSaludpension" className="w-100 mb-2" onChange={handleChange}  />
+          <p className="mb-2">Ingrese el descuento de cesantias del trabajador</p>
+          <input type="number" name="nomCesantias" className="w-100 mb-2" onChange={handleChange}  />
+          <p className="mb-2">Ingrese el descuento de parafiscales  del trabajador</p>
+          <input type="number" name="nomParafiscales" className="w-100 mb-2" onChange={handleChange}  />
+          <p className="mb-2">Ingrese la fecha de inicio</p>
+          <input type="date" name="nomInicio" className="w-100 mb-2" onChange={handleChange}  />
+          <p className="mb-2">Ingrese la fecha de fin</p>
+          <input type="date" name="nomFin" className="w-100 mb-2" onChange={handleChange}  />
             </div>
             <ModalFooter>
               <button className='btn btn-primary' onClick={postWorker}>Agregar nueva nomina</button>

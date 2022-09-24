@@ -7,7 +7,7 @@ padding:0;
 }
 
 p {
-   color: #393953;
+    color: #393953;
   font-size: 19px;
 }
 
@@ -26,14 +26,14 @@ h2{
 .login{
     display: flex;
     justify-content: center;
-  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     background-color: rgb(245, 239, 239);
     padding: 17px;
     width:700px;
     height: 500px;
     border-radius: 10px;
     -webkit-box-shadow: 0px 0px 13px -2px #000000; 
-box-shadow: 0px 0px 13px -2px #000000;
+    box-shadow: 0px 0px 13px -2px #000000;
 }
 
 .contenido{
@@ -75,7 +75,6 @@ box-shadow: 0px 0px 13px -2px #000000;
 .f-pass{
     text-decoration: none;
     color: #393953;
-
 }
 
 .f-pass:hover{
